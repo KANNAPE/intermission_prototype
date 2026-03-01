@@ -1,0 +1,106 @@
+[gd_scene load_steps=11 format=3 uid="uid://6ryntogkk2g3"]
+
+[ext_resource type="Texture2D" uid="uid://dqciptosj4c7d" path="res://capsule.png" id="1_glpr6"]
+[ext_resource type="Script" uid="uid://dcdsm6m0q6wlt" path="res://character.gd" id="1_pjt0s"]
+[ext_resource type="Script" uid="uid://uyj2ac5q5frx" path="res://skills/base_skill.gd" id="2_0qfo5"]
+[ext_resource type="Texture2D" uid="uid://dtdhh3pd318r3" path="res://hitbox.png" id="3_wa5vi"]
+[ext_resource type="Resource" uid="uid://cmi76enlx3inx" path="res://skills/red_primary.tres" id="3_yxww1"]
+[ext_resource type="Resource" uid="uid://cx71n4ysnk206" path="res://skills/red_secondary.tres" id="4_wdpcj"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vu45j"]
+radius = 20.0
+height = 64.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yxww1"]
+radius = 8.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wdpcj"]
+radius = 15.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0qfo5"]
+radius = 26.0
+
+[node name="Character" type="CharacterBody2D"]
+slide_on_ceiling = false
+script = ExtResource("1_pjt0s")
+skills = Array[ExtResource("2_0qfo5")]([ExtResource("3_yxww1"), ExtResource("4_wdpcj")])
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(4, 4)
+texture = ExtResource("1_glpr6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_vu45j")
+
+[node name="Hitboxes" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="Small" type="Area2D" parent="Hitboxes"]
+visible = false
+position = Vector2(36, 0)
+scale = Vector2(1.875, 1.875)
+
+[node name="Sprite2D" type="Sprite2D" parent="Hitboxes/Small"]
+texture_filter = 1
+texture_repeat = 1
+texture = ExtResource("3_wa5vi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitboxes/Small"]
+shape = SubResource("CircleShape2D_yxww1")
+
+[node name="Medium" type="Area2D" parent="Hitboxes"]
+visible = false
+position = Vector2(36, 0)
+scale = Vector2(1.875, 1.875)
+
+[node name="Sprite2D" type="Sprite2D" parent="Hitboxes/Medium"]
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(1.90735e-06, 0)
+scale = Vector2(1.85, 1.85)
+texture = ExtResource("3_wa5vi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitboxes/Medium"]
+shape = SubResource("CircleShape2D_wdpcj")
+
+[node name="Large" type="Area2D" parent="Hitboxes"]
+visible = false
+position = Vector2(36, 0)
+scale = Vector2(1.875, 1.875)
+
+[node name="Sprite2D" type="Sprite2D" parent="Hitboxes/Large"]
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(1.90735e-06, 0)
+scale = Vector2(3.2, 3.2)
+texture = ExtResource("3_wa5vi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitboxes/Large"]
+shape = SubResource("CircleShape2D_0qfo5")
+
+[node name="Debug" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SkillDuration" type="Label" parent="Debug"]
+unique_name_in_owner = true
+layout_mode = 1
+offset_top = -70.0
+offset_right = 114.0
+offset_bottom = -47.0
+text = "salut la tchime"
+
+[node name="SkillExpiringWindow" type="Label" parent="Debug"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -92.0
+offset_right = 30.0
+offset_bottom = -69.0
+grow_vertical = 0
+text = "test"

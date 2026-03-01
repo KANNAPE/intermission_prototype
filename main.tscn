@@ -1,0 +1,152 @@
+[gd_scene load_steps=8 format=3 uid="uid://dte834n0cc5go"]
+
+[ext_resource type="PackedScene" uid="uid://6ryntogkk2g3" path="res://character.tscn" id="1_ig7tw"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_7dm0k"]
+
+[sub_resource type="Gradient" id="Gradient_7dm0k"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 0.647059, 0.521569, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ig7tw"]
+gradient = SubResource("Gradient_7dm0k")
+width = 2000
+height = 100
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0xm2m"]
+size = Vector2(1, 1)
+
+[sub_resource type="Gradient" id="Gradient_h2yge"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(1, 0.647059, 0.521569, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_1bvp3"]
+gradient = SubResource("Gradient_h2yge")
+width = 1
+
+[node name="Main" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(331, -304)
+zoom = Vector2(0.485, 0.485)
+
+[node name="Character" parent="." instance=ExtResource("1_ig7tw")]
+position = Vector2(7, 137)
+speed = 360.0
+gravity_factor = 1600.0
+jump_force = 1000.0
+
+[node name="Terrain" type="Node" parent="."]
+
+[node name="Ground" type="StaticBody2D" parent="Terrain"]
+position = Vector2(328, 264)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/Ground"]
+shape = SubResource("WorldBoundaryShape2D_7dm0k")
+
+[node name="Sprite2D" type="Sprite2D" parent="Terrain/Ground"]
+position = Vector2(0.999954, 51)
+scale = Vector2(0.999, 1)
+texture = SubResource("GradientTexture2D_ig7tw")
+
+[node name="Wall_0" type="StaticBody2D" parent="Terrain"]
+position = Vector2(-672, -259)
+scale = Vector2(50, 1250)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/Wall_0"]
+shape = SubResource("RectangleShape2D_0xm2m")
+
+[node name="Sprite2D" type="Sprite2D" parent="Terrain/Wall_0"]
+texture = SubResource("GradientTexture1D_1bvp3")
+
+[node name="Wall_1" type="StaticBody2D" parent="Terrain"]
+position = Vector2(1308, -259)
+scale = Vector2(50, 1250)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/Wall_1"]
+shape = SubResource("RectangleShape2D_0xm2m")
+
+[node name="Sprite2D" type="Sprite2D" parent="Terrain/Wall_1"]
+texture = SubResource("GradientTexture1D_1bvp3")
+
+[node name="Wall_2" type="StaticBody2D" parent="Terrain"]
+position = Vector2(327, -858)
+rotation = -1.57079
+scale = Vector2(50, 2000)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/Wall_2"]
+shape = SubResource("RectangleShape2D_0xm2m")
+
+[node name="Sprite2D" type="Sprite2D" parent="Terrain/Wall_2"]
+texture = SubResource("GradientTexture1D_1bvp3")
+
+[node name="Wall_3" type="StaticBody2D" parent="Terrain"]
+position = Vector2(-672, -259)
+scale = Vector2(50, 1250)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/Wall_3"]
+shape = SubResource("RectangleShape2D_0xm2m")
+
+[node name="Sprite2D" type="Sprite2D" parent="Terrain/Wall_3"]
+texture = SubResource("GradientTexture1D_1bvp3")
+
+[node name="Platform_0" type="StaticBody2D" parent="Terrain"]
+position = Vector2(891, 79)
+rotation = -1.57079
+scale = Vector2(50, 800)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/Platform_0"]
+rotation = -1.5708
+shape = SubResource("RectangleShape2D_0xm2m")
+
+[node name="Sprite2D" type="Sprite2D" parent="Terrain/Platform_0"]
+texture = SubResource("GradientTexture1D_1bvp3")
+
+[node name="Ledge_0" type="StaticBody2D" parent="Terrain"]
+position = Vector2(396, 64)
+rotation = -1.57079
+scale = Vector2(20, 200)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/Ledge_0"]
+visible = false
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_0xm2m")
+one_way_collision = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Terrain/Ledge_0"]
+texture = SubResource("GradientTexture1D_1bvp3")
+
+[node name="Platform_1" type="StaticBody2D" parent="Terrain"]
+position = Vector2(-256, -414)
+rotation = -1.57079
+scale = Vector2(50, 800)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/Platform_1"]
+rotation = -1.5708
+shape = SubResource("RectangleShape2D_0xm2m")
+
+[node name="Sprite2D" type="Sprite2D" parent="Terrain/Platform_1"]
+texture = SubResource("GradientTexture1D_1bvp3")
+
+[node name="Ledge_1" type="StaticBody2D" parent="Terrain"]
+position = Vector2(243, -429)
+rotation = -1.57079
+scale = Vector2(20, 200)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/Ledge_1"]
+visible = false
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_0xm2m")
+one_way_collision = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Terrain/Ledge_1"]
+texture = SubResource("GradientTexture1D_1bvp3")

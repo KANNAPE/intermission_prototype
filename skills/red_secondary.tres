@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="BaseSkill" load_steps=5 format=3 uid="uid://cx71n4ysnk206"]
+
+[ext_resource type="Script" uid="uid://cqy70ettihiom" path="res://hits/base_hit.gd" id="1_24gqi"]
+[ext_resource type="Script" uid="uid://uyj2ac5q5frx" path="res://skills/base_skill.gd" id="1_syasn"]
+
+[sub_resource type="Resource" id="Resource_24gqi"]
+script = ExtResource("1_24gqi")
+type = 1
+duration = 0.3
+expiring_window = 0.15
+effect = ""
+damage = 15.0
+metadata/_custom_type_script = "uid://cqy70ettihiom"
+
+[sub_resource type="Resource" id="Resource_eseg1"]
+script = ExtResource("1_24gqi")
+type = 2
+duration = 0.5
+expiring_window = 0.0
+effect = ""
+damage = 21.5
+metadata/_custom_type_script = "uid://cqy70ettihiom"
+
+[resource]
+script = ExtResource("1_syasn")
+type = 1
+priority = 0
+hits = Array[ExtResource("1_24gqi")]([SubResource("Resource_24gqi"), SubResource("Resource_eseg1")])
