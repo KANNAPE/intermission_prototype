@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dte834n0cc5go"]
+[gd_scene format=3 uid="uid://dte834n0cc5go"]
 
 [ext_resource type="PackedScene" uid="uid://6ryntogkk2g3" path="res://character.tscn" id="1_ig7tw"]
 
@@ -24,129 +24,129 @@ colors = PackedColorArray(1, 0.647059, 0.521569, 1)
 gradient = SubResource("Gradient_h2yge")
 width = 1
 
-[node name="Main" type="Node2D"]
+[node name="Main" type="Node2D" unique_id=1851763140]
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=2140990967]
 position = Vector2(331, -304)
 zoom = Vector2(0.485, 0.485)
 
-[node name="Character" parent="." instance=ExtResource("1_ig7tw")]
+[node name="Character" parent="." unique_id=1499867221 instance=ExtResource("1_ig7tw")]
 position = Vector2(7, 137)
 speed = 360.0
 gravity_factor = 1600.0
 jump_force = 1000.0
 
-[node name="Terrain" type="Node" parent="."]
+[node name="Terrain" type="Node" parent="." unique_id=350463712]
 
-[node name="Ground" type="StaticBody2D" parent="Terrain"]
+[node name="Ground" type="StaticBody2D" parent="Terrain" unique_id=1591744654]
 position = Vector2(328, 264)
 metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/Ground"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/Ground" unique_id=1864202047]
 shape = SubResource("WorldBoundaryShape2D_7dm0k")
 
-[node name="Sprite2D" type="Sprite2D" parent="Terrain/Ground"]
+[node name="Sprite2D" type="Sprite2D" parent="Terrain/Ground" unique_id=1849941340]
 position = Vector2(0.999954, 51)
 scale = Vector2(0.999, 1)
 texture = SubResource("GradientTexture2D_ig7tw")
 
-[node name="Wall_0" type="StaticBody2D" parent="Terrain"]
+[node name="Wall_0" type="StaticBody2D" parent="Terrain" unique_id=821828430]
 position = Vector2(-672, -259)
 scale = Vector2(50, 1250)
 metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/Wall_0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/Wall_0" unique_id=310636807]
 shape = SubResource("RectangleShape2D_0xm2m")
 
-[node name="Sprite2D" type="Sprite2D" parent="Terrain/Wall_0"]
+[node name="Sprite2D" type="Sprite2D" parent="Terrain/Wall_0" unique_id=1396740432]
 texture = SubResource("GradientTexture1D_1bvp3")
 
-[node name="Wall_1" type="StaticBody2D" parent="Terrain"]
+[node name="Wall_1" type="StaticBody2D" parent="Terrain" unique_id=213008812]
 position = Vector2(1308, -259)
 scale = Vector2(50, 1250)
 metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/Wall_1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/Wall_1" unique_id=917961470]
 shape = SubResource("RectangleShape2D_0xm2m")
 
-[node name="Sprite2D" type="Sprite2D" parent="Terrain/Wall_1"]
+[node name="Sprite2D" type="Sprite2D" parent="Terrain/Wall_1" unique_id=386402194]
 texture = SubResource("GradientTexture1D_1bvp3")
 
-[node name="Wall_2" type="StaticBody2D" parent="Terrain"]
+[node name="Wall_2" type="StaticBody2D" parent="Terrain" unique_id=1949634172]
 position = Vector2(327, -858)
 rotation = -1.57079
 scale = Vector2(50, 2000)
 metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/Wall_2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/Wall_2" unique_id=944876213]
 shape = SubResource("RectangleShape2D_0xm2m")
 
-[node name="Sprite2D" type="Sprite2D" parent="Terrain/Wall_2"]
+[node name="Sprite2D" type="Sprite2D" parent="Terrain/Wall_2" unique_id=553375590]
 texture = SubResource("GradientTexture1D_1bvp3")
 
-[node name="Wall_3" type="StaticBody2D" parent="Terrain"]
+[node name="Wall_3" type="StaticBody2D" parent="Terrain" unique_id=75994322]
 position = Vector2(-672, -259)
 scale = Vector2(50, 1250)
 metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/Wall_3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/Wall_3" unique_id=281034307]
 shape = SubResource("RectangleShape2D_0xm2m")
 
-[node name="Sprite2D" type="Sprite2D" parent="Terrain/Wall_3"]
+[node name="Sprite2D" type="Sprite2D" parent="Terrain/Wall_3" unique_id=1295803276]
 texture = SubResource("GradientTexture1D_1bvp3")
 
-[node name="Platform_0" type="StaticBody2D" parent="Terrain"]
+[node name="Platform_0" type="StaticBody2D" parent="Terrain" unique_id=2025745174]
 position = Vector2(891, 79)
 rotation = -1.57079
 scale = Vector2(50, 800)
 metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/Platform_0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/Platform_0" unique_id=1645149762]
 rotation = -1.5708
 shape = SubResource("RectangleShape2D_0xm2m")
 
-[node name="Sprite2D" type="Sprite2D" parent="Terrain/Platform_0"]
+[node name="Sprite2D" type="Sprite2D" parent="Terrain/Platform_0" unique_id=1472072930]
 texture = SubResource("GradientTexture1D_1bvp3")
 
-[node name="Ledge_0" type="StaticBody2D" parent="Terrain"]
+[node name="Ledge_0" type="StaticBody2D" parent="Terrain" unique_id=329241907]
 position = Vector2(396, 64)
 rotation = -1.57079
 scale = Vector2(20, 200)
 metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/Ledge_0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/Ledge_0" unique_id=903256071]
 visible = false
 rotation = 1.5708
 shape = SubResource("RectangleShape2D_0xm2m")
 one_way_collision = true
 
-[node name="Sprite2D" type="Sprite2D" parent="Terrain/Ledge_0"]
+[node name="Sprite2D" type="Sprite2D" parent="Terrain/Ledge_0" unique_id=496317488]
 texture = SubResource("GradientTexture1D_1bvp3")
 
-[node name="Platform_1" type="StaticBody2D" parent="Terrain"]
+[node name="Platform_1" type="StaticBody2D" parent="Terrain" unique_id=852489147]
 position = Vector2(-256, -414)
 rotation = -1.57079
 scale = Vector2(50, 800)
 metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/Platform_1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/Platform_1" unique_id=246670970]
 rotation = -1.5708
 shape = SubResource("RectangleShape2D_0xm2m")
 
-[node name="Sprite2D" type="Sprite2D" parent="Terrain/Platform_1"]
+[node name="Sprite2D" type="Sprite2D" parent="Terrain/Platform_1" unique_id=184304185]
 texture = SubResource("GradientTexture1D_1bvp3")
 
-[node name="Ledge_1" type="StaticBody2D" parent="Terrain"]
+[node name="Ledge_1" type="StaticBody2D" parent="Terrain" unique_id=731442943]
 position = Vector2(243, -429)
 rotation = -1.57079
 scale = Vector2(20, 200)
 metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/Ledge_1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/Ledge_1" unique_id=786835301]
 visible = false
 rotation = 1.5708
 shape = SubResource("RectangleShape2D_0xm2m")
 one_way_collision = true
 
-[node name="Sprite2D" type="Sprite2D" parent="Terrain/Ledge_1"]
+[node name="Sprite2D" type="Sprite2D" parent="Terrain/Ledge_1" unique_id=2101173262]
 texture = SubResource("GradientTexture1D_1bvp3")

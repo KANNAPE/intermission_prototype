@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://6ryntogkk2g3"]
+[gd_scene format=3 uid="uid://6ryntogkk2g3"]
 
 [ext_resource type="Texture2D" uid="uid://dqciptosj4c7d" path="res://capsule.png" id="1_glpr6"]
 [ext_resource type="Script" uid="uid://dcdsm6m0q6wlt" path="res://character.gd" id="1_pjt0s"]
@@ -20,87 +20,92 @@ radius = 15.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_0qfo5"]
 radius = 26.0
 
-[node name="Character" type="CharacterBody2D"]
+[node name="Character" type="CharacterBody2D" unique_id=1937478476]
 slide_on_ceiling = false
 script = ExtResource("1_pjt0s")
 skills = Array[ExtResource("2_0qfo5")]([ExtResource("3_yxww1"), ExtResource("4_wdpcj")])
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=30946261]
 texture_filter = 1
 scale = Vector2(4, 4)
 texture = ExtResource("1_glpr6")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1097552911]
 shape = SubResource("CapsuleShape2D_vu45j")
 
-[node name="Hitboxes" type="Node2D" parent="."]
+[node name="Hitboxes" type="Node2D" parent="." unique_id=517337875]
 unique_name_in_owner = true
 
-[node name="Small" type="Area2D" parent="Hitboxes"]
+[node name="Small" type="Area2D" parent="Hitboxes" unique_id=1785668391]
 visible = false
 position = Vector2(36, 0)
 scale = Vector2(1.875, 1.875)
 
-[node name="Sprite2D" type="Sprite2D" parent="Hitboxes/Small"]
+[node name="Sprite2D" type="Sprite2D" parent="Hitboxes/Small" unique_id=64097964]
 texture_filter = 1
 texture_repeat = 1
 texture = ExtResource("3_wa5vi")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitboxes/Small"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitboxes/Small" unique_id=609059895]
+visible = false
 shape = SubResource("CircleShape2D_yxww1")
 
-[node name="Medium" type="Area2D" parent="Hitboxes"]
+[node name="Medium" type="Area2D" parent="Hitboxes" unique_id=376466149]
 visible = false
 position = Vector2(36, 0)
 scale = Vector2(1.875, 1.875)
 
-[node name="Sprite2D" type="Sprite2D" parent="Hitboxes/Medium"]
+[node name="Sprite2D" type="Sprite2D" parent="Hitboxes/Medium" unique_id=1552419139]
 texture_filter = 1
 texture_repeat = 1
 position = Vector2(1.90735e-06, 0)
 scale = Vector2(1.85, 1.85)
 texture = ExtResource("3_wa5vi")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitboxes/Medium"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitboxes/Medium" unique_id=1031343933]
 shape = SubResource("CircleShape2D_wdpcj")
 
-[node name="Large" type="Area2D" parent="Hitboxes"]
+[node name="Large" type="Area2D" parent="Hitboxes" unique_id=1671111620]
 visible = false
 position = Vector2(36, 0)
 scale = Vector2(1.875, 1.875)
 
-[node name="Sprite2D" type="Sprite2D" parent="Hitboxes/Large"]
+[node name="Sprite2D" type="Sprite2D" parent="Hitboxes/Large" unique_id=2027916440]
 texture_filter = 1
 texture_repeat = 1
 position = Vector2(1.90735e-06, 0)
 scale = Vector2(3.2, 3.2)
 texture = ExtResource("3_wa5vi")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitboxes/Large"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitboxes/Large" unique_id=1281470156]
 shape = SubResource("CircleShape2D_0qfo5")
 
-[node name="Debug" type="Control" parent="."]
+[node name="Debug" type="Control" parent="." unique_id=1365884817]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="SkillDuration" type="Label" parent="Debug"]
+[node name="JumpCount" type="Label" parent="Debug" unique_id=725760670]
+unique_name_in_owner = true
+layout_mode = 1
+offset_top = -93.0
+offset_right = 30.0
+offset_bottom = -70.0
+text = "jump count: 0"
+
+[node name="SkillDuration" type="Label" parent="Debug" unique_id=681907583]
 unique_name_in_owner = true
 layout_mode = 1
 offset_top = -70.0
 offset_right = 114.0
 offset_bottom = -47.0
-text = "salut la tchime"
+text = "skill duration: 0s"
 
-[node name="SkillExpiringWindow" type="Label" parent="Debug"]
+[node name="SkillExpiringWindow" type="Label" parent="Debug" unique_id=830632003]
 unique_name_in_owner = true
 layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -92.0
-offset_right = 30.0
-offset_bottom = -69.0
-grow_vertical = 0
-text = "test"
+offset_top = -47.0
+offset_right = 188.0
+offset_bottom = -24.0
+text = "skill expiring window: 0s"
