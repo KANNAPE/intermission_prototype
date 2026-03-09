@@ -33,6 +33,7 @@ radius = 26.0
 [node name="Character" type="CharacterBody2D" unique_id=1937478476]
 slide_on_ceiling = false
 script = ExtResource("1_pjt0s")
+jump_force = 0.0
 skills = Array[ExtResource("2_0qfo5")]([ExtResource("3_yxww1"), ExtResource("4_wdpcj")])
 
 [node name="Visual" type="Sprite2D" parent="." unique_id=30946261]

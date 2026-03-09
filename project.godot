@@ -90,6 +90,10 @@ ultimate={
 ]
 }
 
+[physics]
+
+2d/default_gravity=600.0
+
 [rendering]
 
 2d/snap/snap_2d_vertices_to_pixel=true

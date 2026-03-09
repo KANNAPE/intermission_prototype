@@ -1,7 +1,6 @@
 extends CharacterBody2D
 
 @export var speed := 100.0
-@export var gravity_factor := 600.0
 @export var jump_force := 200.0
 @export var jumps := 2
 
@@ -9,7 +8,9 @@ extends CharacterBody2D
 @export var skills: Array[BaseSkill]
 
 # Movement-related variables
+var gravity_factor: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 var lateral_direction := 0.0
+var last_lateral_direction := 0.0
 var wants_to_jump := false
 var target_velocity := Vector2.ZERO
 var jump_count := 0
@@ -77,6 +78,8 @@ func process_movement() -> void:
 		
 		for hitbox: Area2D in hitboxes.get_children():
 			hitbox.position.x = 36.0 * lateral_direction
+		
+		last_lateral_direction = lateral_direction
 
 
 func process_skills(delta: float) -> void:
@@ -135,7 +138,7 @@ func process_skills(delta: float) -> void:
 		if hitbox == null:
 			printerr("request hitbox doesn't exist!")
 		else:
-			display_skill_hitbox(hitbox, current_hit.duration, current_hit.startup_time)
+			compute_hit(current_hit, hitbox, current_hit.duration, current_hit.startup_time)
 		
 	# If a skill is being used, and the expiring window is still open
 	elif (primary_is_triggered and current_skill.type == BaseSkill.SkillType.PRIMARY
@@ -152,7 +155,7 @@ func process_skills(delta: float) -> void:
 		if hitbox == null:
 			printerr("request hitbox doesn't exist!")
 		else:
-			display_skill_hitbox(hitbox, current_hit.duration, current_hit.startup_time)
+			compute_hit(current_hit, hitbox, current_hit.duration, current_hit.startup_time)
 
 
 func get_skill(skill_type: BaseSkill.SkillType) -> BaseSkill:
@@ -171,11 +174,20 @@ func get_skill(skill_type: BaseSkill.SkillType) -> BaseSkill:
 	return corresponding_skill
 
 
-func display_skill_hitbox(hitbox: Area2D, time: float, start_up_time: float = 0.0) -> void:
+func compute_hit(hitData: BaseHit, hitbox: Area2D, time: float, start_up_time: float = 0.0) -> void:
 	hitbox.set_visible(true)
+	
+	# startup time before triggering the hit
 	if not start_up_time == 0.0:
 		hitbox.modulate.a = 90.0/255.0
 		await get_tree().create_timer(start_up_time).timeout
 		hitbox.modulate.a = 1.0
+	
+	# the hit
+	var overlapping_bodies = hitbox.get_overlapping_bodies()
+	for body in overlapping_bodies:
+		if body.has_method("take_hit") and body != self:
+			body.take_hit(hitData.damage, last_lateral_direction)
+	
 	await get_tree().create_timer(time).timeout
 	hitbox.set_visible(false)

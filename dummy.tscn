@@ -1,15 +1,18 @@
 [gd_scene format=3 uid="uid://birlq7hs4uvbp"]
 
 [ext_resource type="Texture2D" uid="uid://dqciptosj4c7d" path="res://capsule.png" id="1_gtj52"]
+[ext_resource type="Script" uid="uid://dru3ra61x15la" path="res://dummy.gd" id="1_xmspm"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gcxmu"]
 radius = 20.0
 height = 64.0
 
-[node name="Dummy" type="RigidBody2D" unique_id=2137280175]
+[node name="Dummy" type="CharacterBody2D" unique_id=1499681363]
+script = ExtResource("1_xmspm")
 
 [node name="Visual" type="Sprite2D" parent="." unique_id=9202163]
-modulate = Color(0, 0, 0.4, 1)
+unique_name_in_owner = true
+modulate = Color(0, 0, 0.39215687, 1)
 texture_filter = 1
 position = Vector2(9.536743e-07, -4.7683716e-07)
 scale = Vector2(4, 4)

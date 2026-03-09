@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dte834n0cc5go"]
 
 [ext_resource type="PackedScene" uid="uid://6ryntogkk2g3" path="res://character.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://birlq7hs4uvbp" path="res://dummy.tscn" id="2_0xm2m"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_7dm0k"]
 
@@ -34,8 +35,10 @@ zoom = Vector2(0.485, 0.485)
 [node name="Character" parent="." unique_id=1499867221 instance=ExtResource("1_ig7tw")]
 position = Vector2(7, 137)
 speed = 360.0
-gravity_factor = 1600.0
-jump_force = 1000.0
+jump_force = 400.0
+
+[node name="Dummy" parent="." unique_id=2137280175 instance=ExtResource("2_0xm2m")]
+position = Vector2(1055, -25)
 
 [node name="Terrain" type="Node" parent="." unique_id=350463712]
 
@@ -94,6 +97,17 @@ metadata/_edit_group_ = true
 shape = SubResource("RectangleShape2D_0xm2m")
 
 [node name="Sprite2D" type="Sprite2D" parent="Terrain/Wall_3" unique_id=1295803276]
+texture = SubResource("GradientTexture1D_1bvp3")
+
+[node name="Wall_4" type="StaticBody2D" parent="Terrain" unique_id=1130065583]
+position = Vector2(1137, -1)
+scale = Vector2(20.32256, 200)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/Wall_4" unique_id=363126581]
+shape = SubResource("RectangleShape2D_0xm2m")
+
+[node name="Sprite2D" type="Sprite2D" parent="Terrain/Wall_4" unique_id=1349582848]
 texture = SubResource("GradientTexture1D_1bvp3")
 
 [node name="Platform_0" type="StaticBody2D" parent="Terrain" unique_id=2025745174]
