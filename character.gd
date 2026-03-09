@@ -24,7 +24,7 @@ var skill_expiring_window_timer := 0.0
 @onready var text_jump_count: Label = %JumpCount
 @onready var text_skill_duration: Label = %SkillDuration
 @onready var text_skill_expiring_window: Label = %SkillExpiringWindow
-@onready var sprite: Sprite2D = $Sprite2D
+@onready var visual: Sprite2D = %Visual
 
 
 func _process(_delta: float) -> void:
@@ -73,7 +73,7 @@ func process_movement() -> void:
 		lateral_direction = 1.0
 	
 	if not is_zero_approx(lateral_direction):
-		sprite.flip_h = lateral_direction < 0.0
+		visual.set_scale(Vector2(4.0 * lateral_direction, 4.0))
 		
 		for hitbox: Area2D in hitboxes.get_children():
 			hitbox.position.x = 36.0 * lateral_direction
@@ -129,13 +129,13 @@ func process_skills(delta: float) -> void:
 		skill_hit_index = 0
 		
 		var current_hit := current_skill.hits[skill_hit_index]
-		skill_exec_duration = current_hit.duration + current_hit.windup_time
+		skill_exec_duration = current_hit.duration + current_hit.startup_time
 		
 		var hitbox := hitboxes.get_child(current_hit.type) as Area2D
 		if hitbox == null:
 			printerr("request hitbox doesn't exist!")
 		else:
-			display_skill_hitbox(hitbox, current_hit.duration, current_hit.windup_time)
+			display_skill_hitbox(hitbox, current_hit.duration, current_hit.startup_time)
 		
 	# If a skill is being used, and the expiring window is still open
 	elif (primary_is_triggered and current_skill.type == BaseSkill.SkillType.PRIMARY
@@ -152,7 +152,7 @@ func process_skills(delta: float) -> void:
 		if hitbox == null:
 			printerr("request hitbox doesn't exist!")
 		else:
-			display_skill_hitbox(hitbox, current_hit.duration, current_hit.windup_time)
+			display_skill_hitbox(hitbox, current_hit.duration, current_hit.startup_time)
 
 
 func get_skill(skill_type: BaseSkill.SkillType) -> BaseSkill:

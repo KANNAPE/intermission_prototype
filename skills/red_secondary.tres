@@ -9,6 +9,7 @@ type = 1
 duration = 0.3
 windup_time = 0.5
 expiring_window = 0.3
+effect = null
 damage = 15.0
 metadata/_custom_type_script = "uid://cqy70ettihiom"
 
@@ -17,6 +18,8 @@ script = ExtResource("1_24gqi")
 type = 2
 duration = 0.5
 windup_time = 0.15
+expiring_window = null
+effect = null
 damage = 21.5
 metadata/_custom_type_script = "uid://cqy70ettihiom"
 

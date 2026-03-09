@@ -7,6 +7,16 @@
 [ext_resource type="Resource" uid="uid://cmi76enlx3inx" path="res://skills/red_primary.tres" id="3_yxww1"]
 [ext_resource type="Resource" uid="uid://cx71n4ysnk206" path="res://skills/red_secondary.tres" id="4_wdpcj"]
 
+[sub_resource type="Gradient" id="Gradient_0qfo5"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.0063492064)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_yxww1"]
+gradient = SubResource("Gradient_0qfo5")
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 1)
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vu45j"]
 radius = 20.0
 height = 64.0
@@ -25,16 +35,26 @@ slide_on_ceiling = false
 script = ExtResource("1_pjt0s")
 skills = Array[ExtResource("2_0qfo5")]([ExtResource("3_yxww1"), ExtResource("4_wdpcj")])
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=30946261]
+[node name="Visual" type="Sprite2D" parent="." unique_id=30946261]
+unique_name_in_owner = true
 texture_filter = 1
 scale = Vector2(4, 4)
 texture = ExtResource("1_glpr6")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1097552911]
+[node name="Direction" type="Sprite2D" parent="Visual" unique_id=811664356]
+modulate = Color(1, 0, 0, 1)
+texture_filter = 1
+position = Vector2(2.5, 0)
+rotation = 2.3561945
+scale = Vector2(0.053518057, 0.053518057)
+texture = SubResource("GradientTexture2D_yxww1")
+
+[node name="Shape" type="CollisionShape2D" parent="." unique_id=1097552911]
 shape = SubResource("CapsuleShape2D_vu45j")
 
 [node name="Hitboxes" type="Node2D" parent="." unique_id=517337875]
 unique_name_in_owner = true
+metadata/_edit_lock_ = true
 
 [node name="Small" type="Area2D" parent="Hitboxes" unique_id=1785668391]
 visible = false
@@ -85,6 +105,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+metadata/_edit_lock_ = true
 
 [node name="JumpCount" type="Label" parent="Debug" unique_id=725760670]
 unique_name_in_owner = true

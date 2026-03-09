@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://birlq7hs4uvbp"]
+
+[ext_resource type="Texture2D" uid="uid://dqciptosj4c7d" path="res://capsule.png" id="1_gtj52"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gcxmu"]
+radius = 20.0
+height = 64.0
+
+[node name="Dummy" type="RigidBody2D" unique_id=2137280175]
+
+[node name="Visual" type="Sprite2D" parent="." unique_id=9202163]
+modulate = Color(0, 0, 0.4, 1)
+texture_filter = 1
+position = Vector2(9.536743e-07, -4.7683716e-07)
+scale = Vector2(4, 4)
+texture = ExtResource("1_gtj52")
+
+[node name="Shape" type="CollisionShape2D" parent="." unique_id=1163867458]
+shape = SubResource("CapsuleShape2D_gcxmu")

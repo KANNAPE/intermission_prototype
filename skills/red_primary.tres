@@ -7,7 +7,9 @@
 script = ExtResource("1_1i4ey")
 type = 1
 duration = 0.15
+windup_time = null
 expiring_window = 0.5
+effect = null
 damage = 12.5
 metadata/_custom_type_script = "uid://cqy70ettihiom"
 
@@ -15,7 +17,9 @@ metadata/_custom_type_script = "uid://cqy70ettihiom"
 script = ExtResource("1_1i4ey")
 type = 1
 duration = 0.15
+windup_time = null
 expiring_window = 0.5
+effect = null
 damage = 10.0
 metadata/_custom_type_script = "uid://cqy70ettihiom"
 
@@ -23,6 +27,9 @@ metadata/_custom_type_script = "uid://cqy70ettihiom"
 script = ExtResource("1_1i4ey")
 type = 2
 duration = 0.35
+windup_time = null
+expiring_window = null
+effect = null
 damage = 17.5
 metadata/_custom_type_script = "uid://cqy70ettihiom"
 

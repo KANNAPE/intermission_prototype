@@ -28,6 +28,7 @@ width = 1
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2140990967]
 position = Vector2(331, -304)
+scale = Vector2(-2.4020422, 1.1709404)
 zoom = Vector2(0.485, 0.485)
 
 [node name="Character" parent="." unique_id=1499867221 instance=ExtResource("1_ig7tw")]
