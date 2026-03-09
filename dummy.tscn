@@ -9,6 +9,9 @@ height = 64.0
 
 [node name="Dummy" type="CharacterBody2D" unique_id=1499681363]
 script = ExtResource("1_xmspm")
+hitstop_duration = 0.2
+hit_scale = Vector2(3.7, 3.2)
+hit_color = Color(1, 1, 1, 1)
 
 [node name="Visual" type="Sprite2D" parent="." unique_id=9202163]
 unique_name_in_owner = true
