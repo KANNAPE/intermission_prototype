@@ -26,6 +26,7 @@ gradient = SubResource("Gradient_h2yge")
 width = 1
 
 [node name="Main" type="Node2D" unique_id=1851763140]
+metadata/_edit_horizontal_guides_ = [64.0, 262.0]
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2140990967]
 position = Vector2(331, -304)

@@ -2,14 +2,14 @@ class_name Player
 extends CharacterBody2D
 
 @export var speed := 100.0
-@export var jump_force := 200.0
 @export var jumps := 2
 
 @export_category("Skills")
 @export var skills: Array[BaseSkill]
 
 # Movement-related variables
-var gravity_factor: float = ProjectSettings.get_setting("physics/2d/default_gravity")
+var jump_gravity: float = GameManager.jump_gravity
+var fall_gravity: float = GameManager.fall_gravity
 var lateral_direction := 0.0
 var last_lateral_direction := 0.0
 var wants_to_jump := false
@@ -50,11 +50,15 @@ func _physics_process(delta: float) -> void:
 	
 	# Jumping
 	if wants_to_jump:
-		target_velocity.y = -jump_force
+		target_velocity.y = GameManager.jump_velocity
 		jump_count += 1
 	
 	# Gravity
 	if not is_on_floor():
+		# If the player is falling, we amplify the gravity
+		var gravity_factor := jump_gravity
+		if velocity.y > 0.0:
+			gravity_factor = fall_gravity
 		target_velocity.y = target_velocity.y + (gravity_factor * delta)
 	elif not wants_to_jump:
 		target_velocity.y = 0
@@ -178,6 +182,10 @@ func get_skill(skill_type: BaseSkill.SkillType) -> BaseSkill:
 func compute_hit(hit_data: BaseHit, hitbox: Area2D, time: float, start_up_time: float = 0.0) -> void:
 	hitbox.set_visible(true)
 	
+	# Applying hitbox offset
+	var hitbox_initial_position := hitbox.get_position()
+	hitbox.set_position(hitbox_initial_position + hit_data.offset)
+	
 	# startup time before triggering the hit
 	if not start_up_time == 0.0:
 		hitbox.modulate.a = 90.0/255.0
@@ -192,3 +200,6 @@ func compute_hit(hit_data: BaseHit, hitbox: Area2D, time: float, start_up_time: 
 	
 	await get_tree().create_timer(time).timeout
 	hitbox.set_visible(false)
+	
+	# Reverting offset
+	hitbox.set_position(hitbox_initial_position)

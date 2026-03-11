@@ -14,7 +14,8 @@ extends CharacterBody2D
 var default_scale: Vector2
 var default_color: Color
 
-var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
+var jump_gravity: float = GameManager.jump_gravity
+var fall_gravity: float = GameManager.fall_gravity
 var hitstop_timer := 0.0
 var last_lateral_velocity := 0.0
 
@@ -35,7 +36,10 @@ func _physics_process(delta: float) -> void:
 	
 	# Applying downward gravity
 	if not is_on_floor():
-		velocity.y += gravity * delta
+		var gravity_factor := jump_gravity
+		if velocity.y > 0.0:
+			gravity_factor = fall_gravity
+		velocity.y += gravity_factor * delta
 	
 	# Adding friction when grounded
 	if is_on_floor():
@@ -53,6 +57,8 @@ func _physics_process(delta: float) -> void:
 		if not wall_collision.get_collider() is Player:
 			velocity.x = -last_lateral_velocity
 			velocity.y = -50.0 # small bouncing upwards
+			
+			play_hit_animation()
 
 
 func take_hit(damage: float, force: BaseHit.HitForce, lateral_direction: float) -> void:
@@ -68,13 +74,7 @@ func take_hit(damage: float, force: BaseHit.HitForce, lateral_direction: float) 
 	sprite.scale = hit_scale
 	sprite.modulate = hit_color
 	
-	# Stopping previous animations
-	if tween:
-		tween.kill()
-	
-	tween = create_tween()
-	tween.tween_property(sprite, "scale", default_scale, 0.2).set_trans(Tween.TRANS_BOUNCE)
-	tween.parallel().tween_property(sprite, "modulate", default_color, 0.2)
+	play_hit_animation()
 	
 	print("dummy took %d damage!", damage)
 
@@ -87,3 +87,13 @@ func apply_staggering(direction: float) -> void:
 func apply_blowback(direction: float) -> void:
 	velocity.x = blowback_force * direction
 	velocity.y = -150.0
+
+
+func play_hit_animation() -> void:
+	# Stopping previous animations
+	if tween:
+		tween.kill()
+	
+	tween = create_tween()
+	tween.tween_property(sprite, "scale", default_scale, 0.2).set_trans(Tween.TRANS_BOUNCE)
+	tween.parallel().tween_property(sprite, "modulate", default_color, 0.2)

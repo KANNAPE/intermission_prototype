@@ -25,6 +25,7 @@ enum HitEffect {
 @export var force: HitForce
 @export var effect: HitEffect
 @export var damage: float
+@export var offset: Vector2
 
 func _init(
 		p_type = HitType.MEDIUM,
@@ -33,7 +34,8 @@ func _init(
 		p_expiring_window = 0.0,
 		p_force = HitForce.NORMAL,
 		p_effect = HitEffect.NONE,
-		p_damage = 0.0) -> void:
+		p_damage = 0.0,
+		p_offset = Vector2.ZERO) -> void:
 	type = p_type
 	duration = p_duration
 	startup_time = p_startup_time
@@ -41,3 +43,4 @@ func _init(
 	force = p_force
 	effect = p_effect
 	damage = p_damage
+	offset = p_offset
