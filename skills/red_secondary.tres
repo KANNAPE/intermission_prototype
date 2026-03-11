@@ -8,7 +8,7 @@ script = ExtResource("1_24gqi")
 type = 1
 duration = 0.3
 expiring_window = 0.3
-effect = null
+force = 1
 damage = 15.0
 metadata/_custom_type_script = "uid://cqy70ettihiom"
 
@@ -16,8 +16,7 @@ metadata/_custom_type_script = "uid://cqy70ettihiom"
 script = ExtResource("1_24gqi")
 type = 2
 duration = 0.5
-expiring_window = null
-effect = null
+force = 2
 damage = 21.5
 metadata/_custom_type_script = "uid://cqy70ettihiom"
 

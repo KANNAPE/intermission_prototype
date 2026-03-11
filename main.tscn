@@ -39,6 +39,8 @@ jump_force = 400.0
 
 [node name="Dummy" parent="." unique_id=2137280175 instance=ExtResource("2_0xm2m")]
 position = Vector2(1055, -25)
+staggering_force = 200.0
+blowback_force = 350.0
 
 [node name="Terrain" type="Node" parent="." unique_id=350463712]
 

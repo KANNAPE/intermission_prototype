@@ -1,3 +1,4 @@
+class_name Player
 extends CharacterBody2D
 
 @export var speed := 100.0
@@ -174,7 +175,7 @@ func get_skill(skill_type: BaseSkill.SkillType) -> BaseSkill:
 	return corresponding_skill
 
 
-func compute_hit(hitData: BaseHit, hitbox: Area2D, time: float, start_up_time: float = 0.0) -> void:
+func compute_hit(hit_data: BaseHit, hitbox: Area2D, time: float, start_up_time: float = 0.0) -> void:
 	hitbox.set_visible(true)
 	
 	# startup time before triggering the hit
@@ -187,7 +188,7 @@ func compute_hit(hitData: BaseHit, hitbox: Area2D, time: float, start_up_time: f
 	var overlapping_bodies = hitbox.get_overlapping_bodies()
 	for body in overlapping_bodies:
 		if body.has_method("take_hit") and body != self:
-			body.take_hit(hitData.damage, last_lateral_direction)
+			body.take_hit(hit_data.damage, hit_data.force, last_lateral_direction)
 	
 	await get_tree().create_timer(time).timeout
 	hitbox.set_visible(false)
